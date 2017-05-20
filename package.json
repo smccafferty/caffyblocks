@@ -1,0 +1,11 @@
+{
+    "name": "caffyblocks",
+    "description": "",
+    "version": "0.0.1",
+    "keywords": [
+        "wordpress-library"
+    ],
+    "devDependencies": {
+        "grunt-contrib-compass": "~1.1"
+    }
+}

@@ -1,0 +1,12 @@
+# system files
+.DS_Store
+Thumbs.db
+/nbproject/private/
+.idea/*
+
+# npm files
+/node_modules
+
+# generated files
+.sass-cache
+lib/
