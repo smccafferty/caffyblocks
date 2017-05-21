@@ -176,7 +176,7 @@ class Room {
 
 			$room_args['value'] = $values;
 
-			CaffyBlocks::GetInstance()->set_setting( $room_args );
+			\Caff\CaffyBlocks::GetInstance()->set_setting( $room_args );
 		}
 	}
 

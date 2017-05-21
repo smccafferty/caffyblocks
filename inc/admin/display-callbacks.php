@@ -74,7 +74,7 @@ function display_psu( $accessory ) {
 			if ( $values ) {
 				foreach ( $values as $index => $value ) {
 					$accessory_args['index'] = $index;
-					$psu_management = new CaffyBlocks_PSU_Management( $accessory_args, $accessory );
+					$psu_management = new \Caff\CaffyBlocks\Post_Selection_Room( $accessory_args, $accessory );
 					$psu_management->render_accessory( $value );
 				}
 			}
