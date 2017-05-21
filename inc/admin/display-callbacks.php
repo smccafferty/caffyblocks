@@ -91,10 +91,10 @@ function display_hidden_field( $accessory ) {
 	<?php
 }
 
-function display_ad_row( $accessory ) {
+function display_ad( $accessory ) {
 	?>
 	<label for="<?php echo esc_attr( $accessory->get_field_id() ); ?>">AD</label>
-	<input type="hidden" name="<?php echo esc_attr( $accessory->get_field_name() ); ?>" id="<?php echo esc_attr( $accessory->get_field_id() ); ?>" value="ad-row" />
+	<input type="hidden" name="<?php echo esc_attr( $accessory->get_field_name() ); ?>" id="<?php echo esc_attr( $accessory->get_field_id() ); ?>" value="ad-room" />
 	<?php
 }
 

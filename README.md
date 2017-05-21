@@ -14,6 +14,9 @@ As mentions in the "Who is this for?" section, think of CaffyBlocks like a map. 
 Generally, I have used this where a site may have 10 to 20 custom post types and the publisher desired granular control of the post types' templates.
 
 ### Usage
+
+To simplify the explanation I have provided a file within the plugin that gives an example (example.php) on how to implement each piece of CaffyBlocks. With the first being the administration portion `CaffyBlocks_Admin_Example` and the second being the usage portion ( `CaffyBlocks_Usage_Example` ). The following context explains the terminology used for the data structures.
+
 TLDR - There are 4 parts, in the following order from beginning to end.
 Foundation
 Buildings
@@ -51,8 +54,9 @@ $ compass watch
 Please keep in mind this plugin is very much in its infancy which is why it hasn't been published on wordpress.org, yet. I am still working through the initial development so there is bound to be bugs.
 
  - Write unit tests!
+ - More thorough documentation / examples
  - i18n Support
- - Better style the admin template
+ - Style the admin template
  - Add additional pre-made "accessories"
 
 License

@@ -3,6 +3,7 @@ namespace Caff\CaffyBlocks;
 
 require_once __DIR__ . '/display-callbacks.php';
 require_once __DIR__ . '/sanitize-callbacks.php';
+require_once __DIR__ . '/settings.php';
 
 if ( !class_exists( 'Post_Selection_UI' ) ) {
 	require_once __DIR__ . '/lib/voceconnect/post-selection-ui/post-selection-ui.php';
@@ -11,6 +12,11 @@ if ( !class_exists( 'Post_Selection_UI' ) ) {
 class Admin {
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );
+
+		// instaniate new settings page
+		$settings_page = new \Caff\CaffyBlocks\Admin\Settings();
+		add_action( 'admin_menu', array( $settings_page, 'admin_menu' ) );
+		add_action( 'admin_init', array( $settings_page, 'admin_init' ) );
 	}
 
 	public static function admin_init() {

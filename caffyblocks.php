@@ -43,6 +43,17 @@ class CaffyBlocks {
 		return self::$instance;
 	}
 
+	public static function init() {
+		// Load example if the setting is enabled
+		$caffyblocks_settings = get_option( 'caffyblocks_settings' );
+		$example_enabled      = isset( $caffyblocks_settings['enable_test_implementation'] ) ? intval( $caffyblocks_settings['enable_test_implementation'] ) : false;
+		if ( ! empty( $example_enabled ) ) {
+			require_once __DIR__ . '/example.php';
+			// Create the WordPress admin example
+			add_action( 'wp_loaded', array( '\Caff\CaffyBlocks_Admin_Example', 'setup' ) );
+		}
+	}
+
 	/**
 	 * Helper function to get a plugins url, relative to the $relative_path.
 	 * @param string $relative_path The relative building to the plugin path.
@@ -180,7 +191,7 @@ class CaffyBlocks {
 	}
 
 	/**
-	 * Get a caffyblocks' foundation
+	 * Get a caffyblocks foundation
 	 * @return CaffyBlocks\Foundation
 	 */
 	public function get_foundation() {
@@ -348,3 +359,4 @@ class CaffyBlocks {
 		return ( is_a( $accessory, 'Caff\CaffyBlocks\Accessory' ) ) ? $accessory : false;
 	}
 }
+CaffyBlocks::init();
