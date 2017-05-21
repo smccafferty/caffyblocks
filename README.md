@@ -1,21 +1,21 @@
 # CaffyBlocks
-CaffyBlocks is a WordPress plugin that provides a foundation for developers to give publishers a way to easily manage content or setting across a site. The original intention of this plugin was to curate areas of custom post templates so that the publisher could have more finite control of the content outside of the normal post loop displayed. Such as select specific posts or critera used for carousels, providing custom external RSS feeds for different post types.
+CaffyBlocks is a WordPress plugin that provides a foundation for developers to give publishers a way to easily manage content or settings across a site as an alternative to bloated page builders. The original intention of this plugin was to curate areas of custom post templates so that the publisher could have finite control of the content displayed, outside of the normal post loop. Such as selecting specific posts or critera used for carousels, providing custom external RSS feeds for different post types and much more.
 
-This plugin is based on a concept I have used in previous projects although felt the need to make it standalone and let others use! I do want to mention it is still very much a work in progress.
+This plugin is based on a concept I have used in previous projects although wanted to make it standalone so that others could use it! I do want to stress it is still, very much, a work in progress.
 
 ### Who is this for?
-It's intention to make life easier for both developers and publishers. It gives a framework for developers to easily add controls and settings, presented in a simple, non bloated way to publishers so that they can curate the content across their site. I like to refer to it as a map for publishing.
+It's intention is to make life easier for both developers and publishers. It gives a framework for developers to easily add controls and settings, presented in a simple, non bloated way to publishers, so that they can curate the content across their site. I like to refer to it as a map for publishing.
 
-Not only is it easy for developers but I wanted to ensure it was performant. Many times visual editors or page builders are very bloated which makes them VERY slows. While CaffyBlocks is not exactly a visual editor or a page builder, there is not always the need for something as expansive as those. That is where this plugin comes in, allowing developers to streamline publisher's options, to gives the publishers exactly what they need and caching as much as possible to keep vistors from long load times!
+Not only is it easy for developers but I wanted to ensure it was performant. Many times visual editors or page builders are very bloated which makes them VERY slow. While CaffyBlocks is not exactly a visual editor or a page builder, there is not always the need for something as expansive as those options. That is where this plugin comes in, allowing developers to streamline publishers' options, give the publishers exactly what they need to manage the site and caching as much as possible to keep vistors from experiencing long load times!
 
 ### What are some ideas where I would use this plugin?
-As mentions in the "Who is this for?" section, think of CaffyBlocks like a map. In the past I have used it to create the wireframe of the template so that publisher can use it as a jumping off point to manage each template and when existing edit functionality already exists it would link off, such as the Sidebar or Menu editors.
+As mentioned in the "Who is this for?" section, think of CaffyBlocks like a map. In the past I have used it to create the wireframes of the post templates. It allows the publisher to use it as a jumping off point to manage each template. In cases where it would be editing existing functionality, the CaffyBlocks admin would link off to the respective editor. Whether it was a specific page, the sidebar or the menu editor.
 
 Generally, I have used this where a site may have 10 to 20 custom post types and the publisher desired granular control of the post types' templates.
 
 ### Usage
 
-To simplify the explanation I have provided a file within the plugin that gives an example (example.php) on how to implement each piece of CaffyBlocks. With the first being the administration portion `CaffyBlocks_Admin_Example` and the second being the usage portion ( `CaffyBlocks_Usage_Example` ). The following context explains the terminology used for the data structures.
+To simplify the explanation, I have provided a file within the plugin that gives an example (example.php) on how to implement each piece of CaffyBlocks. With the first being the administration portion ( `CaffyBlocks_Admin_Example` ) and the second being the usage portion ( `CaffyBlocks_Usage_Example` ). The following context explains the terminology used for the data structures.
 
 TLDR - There are 4 parts, in the following order from beginning to end.
 Foundation
@@ -23,15 +23,15 @@ Buildings
 Rooms
 Accessories
 
-So why the name CaffyBlocks? I wanted to keep the internal data structures relatable to real life. Since many of us used LEGOS as kids, I figure if we think of the design like building a toy house it would be easier to differentiate each step.
+So why the name CaffyBlocks? I wanted to keep the internal data structures relatable to real life. Since many of us used LEGOS as kids, I figure if we think of the design like building a toy house, it would be easier to differentiate each step.
 
-You start with the foundation, in which you would put all of the blocks on. Generally the foundation for this plugin would be the entire site.
+You start with the foundation, in which you would put all of the blocks on. Generally the "foundation" would be the entire site.
 
-Next, you begin creating the buildings on the foundation; could be a house, garage, dog house. Many times this would be each post type's template or specific page templates (homepage, contact page, ect).
+Next, you begin creating the buildings on the foundation; could be a house, a garage or a shed. Relating this to CaffyBlocks, this would be each post types' template or specific page templates (homepage, post template, page template, ect).
 
-Then, for each of those buildings you may create some rooms, possibly bedrooms, kitchen and a living room. We could relate this to different areas of the templates; header, footer, sidebar.
+Then, for each of those buildings you may create some rooms, possibly bedrooms, a kitchen and a living room. Some examples of "rooms" could be different areas of the templates, the header, the footer and the sidebar.
 
-Finally, you have accessories in the rooms like chairs, desks, switches, paintings, ect. This is final element, the meat and potatoes. These are the actual controls for each of the areas.
+Finally, you have accessories in the rooms like chairs, desks, switches, paintings, ect. This is final element of CaffyBlocks, the meat and potatoes. These are the actual controls for each of the areas, such as labels, checkboxes, select boxes or post selection.
 
 ### Installation
 
