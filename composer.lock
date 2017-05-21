@@ -1,0 +1,64 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "01b0eed31e650dd7c02955dd2ed0d915",
+    "packages": [
+        {
+            "name": "voceconnect/post-selection-ui",
+            "version": "1.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voceconnect/post-selection-ui.git",
+                "reference": "3c846c6c27927619313cb2d6666c4a0ad0c6b823"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voceconnect/post-selection-ui/zipball/3c846c6c27927619313cb2d6666c4a0ad0c6b823",
+                "reference": "3c846c6c27927619313cb2d6666c4a0ad0c6b823",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/Post_Selection_Box.php",
+                    "src/Post_Selection_UI.php"
+                ],
+                "files": [
+                    "post-selection-ui.php",
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv2+"
+            ],
+            "authors": [
+                {
+                    "name": "Gary Smirny",
+                    "email": "gary@voceconnect.com"
+                },
+                {
+                    "name": "Mat Gargano",
+                    "email": "mat@voceconnect.com"
+                },
+                {
+                    "name": "Michael Pretty",
+                    "email": "mpretty@voceconnect.com"
+                }
+            ],
+            "description": "A WordPress library to display a user interface to easily select posts from any post type",
+            "time": "2015-07-23 17:36:49"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}

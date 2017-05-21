@@ -57,6 +57,34 @@ function display_links( $accessory ) {
 	<?php
 }
 
+function display_psu( $accessory ) {
+	$values = ( ! empty( $accessory->value ) ? $accessory->value : array() );
+	$values = array_values( $values );
+
+	$accessory_args = ( ! empty( $accessory->data ) ? $accessory->data : array() );
+
+	$accessory_args['limit']      = (int)( ! empty( $accessory_args['limit'] ) ? $accessory_args['limit'] : 0 );
+	$accessory_args['multiple']   = ( ! empty( $accessory_args['multiple'] ) ? true : false );
+	$accessory_args['post_types'] = (array)( ! empty( $accessory_args['post_types'] ) ? $accessory_args['post_types'] : 'any' );
+
+	?>
+	<div class="caffyblocks-psu-accessory-wrapper" data-limit="<?php echo esc_attr( $accessory_args['limit'] ); ?>" data-multiple="<?php echo esc_attr( $accessory_args['multiple'] ); ?>" data-post_types="<?php echo urlencode( json_encode( $accessory_args['post_types'] ) ); ?>" data-field_name="<?php echo esc_attr( $accessory->get_field_name() ); ?>">
+		<div class="caffyblocks-psu-container">
+			<?php
+			if ( $values ) {
+				foreach ( $values as $index => $value ) {
+					$accessory_args['index'] = $index;
+					$psu_management = new CaffyBlocks_PSU_Management( $accessory_args, $accessory );
+					$psu_management->render_accessory( $value );
+				}
+			}
+			?>
+		</div>
+		<p><a href="#" class="caffyblocks-add-psu-room">Add</a></p>
+	</div>
+	<?php
+}
+
 function display_hidden_field( $accessory ) {
 	?>
 	<input type="hidden" name="<?php echo esc_attr( $accessory->get_field_name() ); ?>" id="<?php echo esc_attr( $accessory->get_field_id() ); ?>" value="<?php echo esc_attr( $accessory->value ); ?>" />

@@ -1,0 +1,28 @@
+{
+    "name": "caffyblocks",
+    "description": "provide a foundation to curate the content the templates for post/pages/custom post types",
+    "authors": [],
+    "type": "project",
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "http://wp-plugins.packagist.voceconnect.com/"
+        },
+        {
+            "type": "composer",
+            "url": "http://packagist.voceconnect.com"
+        }
+    ],
+   "config": {
+        "vendor-dir": "lib/"
+    },
+    "require": {
+        "voceconnect/post-selection-ui": "~1.2.0"
+    },
+    "require-dev": {
+    },
+    "extra": {
+        "installer-paths": {
+        }
+    }
+}

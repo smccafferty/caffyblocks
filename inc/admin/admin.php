@@ -4,6 +4,10 @@ namespace Caff\CaffyBlocks;
 require_once __DIR__ . '/display-callbacks.php';
 require_once __DIR__ . '/sanitize-callbacks.php';
 
+if ( !class_exists( 'Post_Selection_UI' ) ) {
+	require_once __DIR__ . '/lib/voceconnect/post-selection-ui/post-selection-ui.php';
+}
+
 class Admin {
 	public static function init() {
 		add_action( 'admin_init', array( __CLASS__, 'admin_init' ) );

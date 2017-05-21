@@ -8,23 +8,24 @@ Author: smccafferty
 Author URI: http://github.com/smccafferty
  */
 
-// Example Implementation
-//		// example iterate over defined listing room
-//		$test = CaffyBlocks::GetInstance()->get_accessory( {accessory_id}, {room_id}, {building_id} )->get_value();
-//
-//		// example iterate over dynamic listing room
-//		$test2 = CaffyBlocks::GetInstance()->get_setting( array(
-//			'building_id'  => {building_id},
-//			'room_id'   => {room_id}
-//		));
-//
-//		if ( ! empty( $test2 ) ) {
-//			foreach( $test2 as $dynamic_room_id => $dynamic_room ) {
-//				$test3 = CaffyBlocks::GetInstance()->get_accessory( {accessory_id}, $dynamic_room_id, {building_id} )->get_value();
-//			}
-//		}
-
 namespace Caff;
+
+// load external dependencies if they exist and are not already loaded
+$class_dependencies = array(
+	'Post_Selection_UI'
+);
+$run_auto_load = false;
+foreach( $class_dependencies as $class_dependency ) {
+	if ( ! class_exists( $class_dependency ) ) {
+		$run_auto_load = true;
+		break;
+	}
+}
+if ( $run_auto_load && file_exists( __DIR__ . '/lib/autoload.php' ) ) {
+	require_once __DIR__ . '/lib/autoload.php';
+} elseif ( $run_auto_load ) {
+	return;
+}
 
 require_once __DIR__ . '/inc/caching.php';
 require_once __DIR__ . '/inc/base.php';
