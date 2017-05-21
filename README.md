@@ -15,7 +15,7 @@ Generally, I have used this where a site may have 10 to 20 custom post types and
 
 ### Usage
 
-To simplify the explanation, I have provided a file within the plugin that gives an example (example.php) on how to implement each piece of CaffyBlocks. With the first being the administration portion ( `CaffyBlocks_Admin_Example` ) and the second being the usage portion ( `CaffyBlocks_Usage_Example` ). The following context explains the terminology used for the data structures.
+To simplify the explanation, I have provided a file (example.php) within the plugin that gives an example on how to implement each piece of CaffyBlocks. With the first being the administration portion ( `CaffyBlocks_Admin_Example` ) and the second being the usage portion ( `CaffyBlocks_Usage_Example` ). The following context explains the terminology used for the data structures.
 
 TLDR - There are 4 parts, in the following order from beginning to end.
 Foundation
@@ -42,9 +42,10 @@ $ cd {site directory}/wp-content/plugins/caffyblocks
 $ composer install
 ```
 
-If there is a desire to rebuild the plugin's CSS, compass is already configured. However, NPM needs to be installed.
+The compiled CSS is included in the repo although if there is a desire to rebuild the plugin's CSS, a config.rb is already provided to use with Compass. I will note that NPM may need to be installed.
 
 ```sh
+$ cd {site directory}/wp-content/plugins/caffyblocks
 $ npm install
 $ compass watch
 ```
