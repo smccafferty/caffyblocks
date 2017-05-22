@@ -89,14 +89,19 @@ class Room {
 			<?php $options = ( isset( $this->args['options'] ) && is_array( $this->args['options'] ) ) ? $this->args['options'] : array(); ?>
 			<div id="<?php echo esc_attr( sprintf( 'dynamic-rooms-%s', $this->room_id ) ); ?>" class="parent-room"></div>
 			<p id="<?php echo esc_attr( sprintf( 'room-%s', $this->room_id ) ); ?>" class="text-center parent-room">
-				<?php foreach ( $options as $option_key => $option_data ) : ?>
-					<?php
+				<?php
+				foreach ( $options as $option_key => $option_data ) :
 					$option_label = isset( $option_data['label'] ) ? $option_data['label'] : false;
 					if ( empty( $option_label ) ) {
 						continue;
 					}
 					?>
-					<input type="button" name="<?php echo esc_attr( sprintf( 'add-%s', $option_key ) ); ?>" id="<?php echo esc_attr( sprintf( 'add-%s', $option_key ) ); ?>" data-type="<?php echo esc_attr( $option_key ); ?>" data-base-room-id="<?php echo esc_attr( $this->room_id ); ?>" data-building-id="<?php echo esc_attr( $this->building->building_id ); ?>" data-foundation-id="<?php echo esc_attr( $this->building->foundation->foundation_id ); ?>" value="<?php echo esc_attr( sprintf( 'Add %s', $option_label ) ); ?>" data-container-id="<?php printf( 'dynamic-rooms-%s', esc_attr( $this->room_id ) ); ?>" class="button add-room" />
+					<input type="button" name="<?php echo esc_attr( sprintf( 'add-%s', $option_key ) ); ?>"
+						   id="<?php echo esc_attr( sprintf( 'add-%s', $option_key ) ); ?>" data-type="<?php echo esc_attr( $option_key ); ?>"
+						   data-base-room-id="<?php echo esc_attr( $this->room_id ); ?>" data-building-id="<?php echo esc_attr( $this->building->building_id ); ?>"
+						   data-foundation-id="<?php echo esc_attr( $this->building->foundation->foundation_id ); ?>"
+						   value="<?php echo esc_attr( sprintf( 'Add %s', $option_label ) ); ?>"
+						   data-container-id="<?php printf( 'dynamic-rooms-%s', esc_attr( $this->room_id ) ); ?>" class="button add-room" />
 				<?php endforeach; ?>
 			</p>
 		<?php else : ?>
@@ -249,7 +254,7 @@ class Room {
 				// add the hidden accessory to specify the room type
 				$room->add_accessory( $room_type_key, array(
 					'type'             => 'setting',
-					'display_callback' => 'display_hidden_field',
+					'display_callback' => 'Caff\CaffyBlocks\Admin\display_hidden_field',
 					'value'            => $room_type
 				) );
 
