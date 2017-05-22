@@ -6,11 +6,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "http://wp-plugins.packagist.voceconnect.com/"
-        },
-        {
-            "type": "composer",
-            "url": "http://packagist.voceconnect.com"
+            "url": "https://packagist.voceconnect.com"
         }
     ],
    "config": {
@@ -18,8 +14,6 @@
     },
     "require": {
         "voceconnect/post-selection-ui": "~1.2.0"
-    },
-    "require-dev": {
     },
     "extra": {
         "installer-paths": {
