@@ -240,8 +240,8 @@ class CaffyBlocks {
 	 */
 	public function get_accessory( $accessory_id, $room_id, $building_id ) {
 		$room = $this->get_room( $room_id, $building_id );
-		if ( ! empty( $room ) && isset( $room->accessorys[ $accessory_id ] ) ) {
-			return $room->accessorys[ $accessory_id ];
+		if ( ! empty( $room ) && isset( $room->accessories[ $accessory_id ] ) ) {
+			return $room->accessories[ $accessory_id ];
 		}
 		return null;
 	}
@@ -287,83 +287,95 @@ class CaffyBlocks {
 					$building = isset( $foundation->buildings[ $matches[ $index ] ] ) ? $foundation->buildings[ $matches[ $index ] ] : false;
 					break;
 				case 'room_id' :
-					if ( ! isset( $building ) || ! is_a( $building, 'Caff\CaffyBlocks\Building' ) ) {
-						break;
-					}
-
-					$room = isset( $building->rooms[ $matches[ $index ] ] ) ? $building->rooms[ $matches[ $index ] ] : false;
-
-					// if its a parent then we know we are looking for accessory in a dynamic room
-					if ( $room->is_parent ) {
-
-						$dynamic_room_id           = isset( $matches[ $index + 1 ] ) ? $matches[ $index + 1 ] : false;
-						$dynamic_room_accessory_id = isset( $matches[ $index + 2 ] ) ? $matches[ $index + 2 ] : false;
-
-						// check if required key exist
-						if ( empty( $dynamic_room_id ) || empty( $dynamic_room_accessory_id ) ) {
-							break;
-						}
-
-						// check if dynamic room already exists, means room has been save
-						$dynamic_room = isset( $building->rooms[ $dynamic_room_id ] ) ? $building->rooms[ $dynamic_room_id ] : false;
-
-						// need to create dynamic room
-						if ( empty( $dynamic_room ) ) {
-
-							$labels = array(
-								'room-type',
-								'dynamic-id'
-							);
-
-							$dynamic_room_type_and_id = explode( CaffyBlocks\Room::$dynamic_base_identifier, $dynamic_room_id );
-
-							// invalid args
-							if ( count( $labels ) !== count( $dynamic_room_type_and_id ) ) {
-								break;
-							}
-							
-							$dynamic_room_type_and_id = array_combine( $labels, $dynamic_room_type_and_id );
-
-							$room_type_args = $room->get_dynamic_room_args( $dynamic_room_type_and_id['room-type'] );
-
-							// don't continue creating the room if the room type args are not defined
-							if ( empty( $room_type_args ) ) {
-								break;
-							}
-
-							$room_label = isset( $room_type_args['label'] ) ? $room_type_args['label'] : '';
-
-							// add the args
-							$room_args = isset( $room_type_args['args'] ) ? $room_type_args['args'] : array();
-
-							$room_args['parent_room'] = $room->room_id;
-
-							// create dynamic room
-							$dynamic_room = $room->building->add_room( $room_label, $dynamic_room_id, $room_args );
-
-							// accessory key does not exist or accessory type doesnt exist for the dynamic room
-							if ( empty( $dynamic_room_accessory_id ) || empty( $room_type_args['accessorys'][ $dynamic_room_accessory_id ] ) ) {
-								break;
-							}
-
-							$accessory = $dynamic_room->add_accessory( $dynamic_room_accessory_id, $room_type_args['accessorys'][ $dynamic_room_accessory_id ] );
-						} else {
-							$accessory = isset( $dynamic_room->accessorys[ $dynamic_room_accessory_id ] ) ? $dynamic_room->accessorys[ $dynamic_room_accessory_id ] : false;
-						}
-					} else {
-						$accessory_id = isset( $matches[ $index + 1 ] ) ? $matches[ $index + 1 ] : false;
-
-						// check if required key exist
-						if ( empty( $accessory_id ) ) {
-							break;
-						}
-
-						$accessory = isset( $room->accessorys[ $accessory_id ] ) ? $room->accessorys[ $accessory_id ] : false;
-					}
+					$accessory = $this->_accessory_by_fieldname_case_room_id( $building, $matches, $index );
 			}
 		}
 
 		return ( is_a( $accessory, 'Caff\CaffyBlocks\Accessory' ) ) ? $accessory : false;
+	}
+
+	/**
+	 * Helper function for `get_accessory_by_field_name` used for the 'room_id' case in the switch statement.
+	 * @param Caff\CaffyBlocks\Building $building
+	 * @return mixed
+	 */
+	private function _accessory_by_fieldname_case_room_id( $building, $matches, $index ) {
+		$accessory = false;
+
+		if ( ! isset( $building ) || ! is_a( $building, 'Caff\CaffyBlocks\Building' ) ) {
+			return false;
+		}
+
+		$room = isset( $building->rooms[ $matches[ $index ] ] ) ? $building->rooms[ $matches[ $index ] ] : false;
+
+		// if its a parent then we know we are looking for accessory in a dynamic room
+		if ( $room->is_parent ) {
+
+			$dynamic_room_id           = isset( $matches[ $index + 1 ] ) ? $matches[ $index + 1 ] : false;
+			$dynamic_room_accessory_id = isset( $matches[ $index + 2 ] ) ? $matches[ $index + 2 ] : false;
+
+			// check if required key exist
+			if ( empty( $dynamic_room_id ) || empty( $dynamic_room_accessory_id ) ) {
+				return false;
+			}
+
+			// check if dynamic room already exists, if so means room has been saved
+			$dynamic_room = isset( $building->rooms[ $dynamic_room_id ] ) ? $building->rooms[ $dynamic_room_id ] : false;
+
+			// need to create dynamic room
+			if ( empty( $dynamic_room ) ) {
+
+				$labels = array(
+					'room-type',
+					'dynamic-id'
+				);
+
+				$dynamic_room_type_and_id = explode( CaffyBlocks\Room::$dynamic_base_identifier, $dynamic_room_id );
+
+				// invalid args
+				if ( count( $labels ) !== count( $dynamic_room_type_and_id ) ) {
+					return false;
+				}
+
+				$dynamic_room_type_and_id = array_combine( $labels, $dynamic_room_type_and_id );
+
+				$room_type_args = $room->get_dynamic_room_args( $dynamic_room_type_and_id['room-type'] );
+
+				// don't continue creating the room if the room type args are not defined
+				if ( empty( $room_type_args ) ) {
+					return false;
+				}
+
+				$room_label = isset( $room_type_args['label'] ) ? $room_type_args['label'] : '';
+
+				// add the args
+				$room_args = isset( $room_type_args['args'] ) ? $room_type_args['args'] : array();
+
+				$room_args['parent_room'] = $room->room_id;
+
+				// create dynamic room
+				$dynamic_room = $room->building->add_room( $room_label, $dynamic_room_id, $room_args );
+
+				// accessory key does not exist or accessory type doesnt exist for the dynamic room
+				if ( empty( $dynamic_room_accessory_id ) || empty( $room_type_args['accessories'][ $dynamic_room_accessory_id ] ) ) {
+					return false;
+				}
+
+				$accessory = $dynamic_room->add_accessory( $dynamic_room_accessory_id, $room_type_args['accessories'][ $dynamic_room_accessory_id ] );
+			} else {
+				$accessory = isset( $dynamic_room->accessories[ $dynamic_room_accessory_id ] ) ? $dynamic_room->accessories[ $dynamic_room_accessory_id ] : false;
+			}
+		} else {
+			$accessory_id = isset( $matches[ $index + 1 ] ) ? $matches[ $index + 1 ] : false;
+
+			// check if required key exist
+			if ( empty( $accessory_id ) ) {
+				return false;
+			}
+
+			$accessory = isset( $room->accessories[ $accessory_id ] ) ? $room->accessories[ $accessory_id ] : false;
+		}
+		return $accessory;
 	}
 }
 CaffyBlocks::init();
