@@ -24,6 +24,13 @@ foreach( $class_dependencies as $class_dependency ) {
 if ( $run_auto_load && file_exists( __DIR__ . '/lib/autoload.php' ) ) {
 	require_once __DIR__ . '/lib/autoload.php';
 } elseif ( $run_auto_load ) {
+	add_action( 'admin_notices', function() {
+		?>
+		<div class="error notice">
+			<p><?php _e( 'CaffyBlocks reports the autoload file should run but does not exist! Please check your CaffyBlocks plugin files.', 'caffyblocks' ); ?></p>
+		</div>
+		<?php
+	} );
 	return;
 }
 
