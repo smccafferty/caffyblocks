@@ -1,7 +1,7 @@
 # CaffyBlocks
-CaffyBlocks is a WordPress plugin that provides a foundation for developers to give publishers a way to easily manage content or settings across a site as an alternative to bloated page builders. The original intention of this plugin was to curate areas of custom post templates so that the publisher could have finite control of the content displayed, outside of the normal post loop. Such as selecting specific posts or critera used for carousels, providing custom external RSS feeds for different post types and much more.
+CaffyBlocks is a WordPress plugin that provides a foundation for developers, to give publishers a way to easily manage content or settings across a site, as an alternative to bloated page builders. The original intention of this plugin was to curate areas of custom post templates so that the publisher could have finite control of the content displayed, outside of the normal post loop. Such as selecting specific posts or critera used for carousels, providing custom external RSS feeds for different post types and much more.
 
-This plugin is based on a concept I have used in previous projects although wanted to make it standalone so that others could use it! I do want to stress it is still, very much, a work in progress.
+If I had to sum it up in less that 5 words, its framework for building "blocks." Also, while CaffyBlocks has much of its base functionality, I do want to stress it is still, very much, a work in progress.
 
 ### Who is this for?
 It's intention is to make life easier for both developers and publishers. It gives a framework for developers to easily add controls and settings, presented in a simple, non bloated way to publishers, so that they can curate the content across their site. I like to refer to it as a map for publishing.
