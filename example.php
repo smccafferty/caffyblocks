@@ -55,7 +55,7 @@ class CaffyBlocks_Admin_Example {
 				) )->room->building
 			->add_dynamic_rooms( 'temporary-rooms', array(
 				'options' => array(
-					'ad-row'          => array(
+					'ad-row' => array(
 						'label'    => 'Ad',
 						'controls' => array(
 							'ad-room' => array(
@@ -115,7 +115,7 @@ class CaffyBlocks_Admin_Example {
 						'display_callback' => 'Caff\CaffyBlocks\Admin\display_dropdown',
 						'data'             => array(
 							'options' => array(
-								'1-column' => '1 Column',
+								'1-column'  => '1 Column',
 								'2-columns' => '2 Columns',
 							)
 						),
